@@ -38,10 +38,23 @@ class Song
   end
 
   def self.genre_count
-    genre_count = Hash.new(0)
+    genre_count = {}
     @@genres.each do |genre|
-      genre_count.store(genre, genre_count[genre]+1)
+      if genre_count[genre]
+        genre_count[genre] += 1 
+      else
+        genre_count[genre] = 1
+      end
     end
     genre_count
   end
+    
+end
+
+
+genre_count = Hash.new(0)
+@@genres.each do |genre|
+  genre_count.store(genre, genre_count[genre]+1)
+end
+genre_count
 end
